@@ -72,7 +72,7 @@ export interface LCDClientConfig {
 }
 
 const DEFAULT_NETWORK_CONFIG: Record<
-  'mainnet' | 'testnet',
+  'mainnet' | 'testnet' | 'classic',
   Record<string, LCDClientConfig>
 > = {
   mainnet: {
@@ -88,6 +88,15 @@ const DEFAULT_NETWORK_CONFIG: Record<
     'pisco-1': {
       chainID: 'pisco-1',
       lcd: 'https://pisco-lcd.terra.dev',
+      gasAdjustment: 1.75,
+      gasPrices: { uluna: 0.015 },
+      prefix: 'terra',
+    },
+  },
+  classic: {
+    'columbus-5': {
+      chainID: 'columbus-5',
+      lcd: 'https://terra-classic-fcd.publicnode.com',
       gasAdjustment: 1.75,
       gasPrices: { uluna: 0.015 },
       prefix: 'terra',
@@ -194,7 +203,7 @@ export class LCDClient {
     this.smartaccount = new SmartaccountAPI(this);
   }
 
-  public static fromDefaultConfig(network: 'mainnet' | 'testnet') {
+  public static fromDefaultConfig(network: 'mainnet' | 'testnet' | 'classic') {
     // TODO: fetch config from assets.terra.money
     return new LCDClient(DEFAULT_NETWORK_CONFIG[network]);
   }

@@ -48,6 +48,13 @@ npm install @terra-money/feather.js
 npm install @terra-money/terra.proto
 ```
 
+
+<!-- ```sh
+npm install typescript
+npm i -d @types/node
+npx tsc
+``` -->
+
 ## Usage
 
 Feather.js can be used in Node.js, as well as inside the browser. Please check the [docs](https://docs.terra.money/docs/develop/feather-js) for notes on how to get up and running.
